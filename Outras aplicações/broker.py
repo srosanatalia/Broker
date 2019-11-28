@@ -1,5 +1,6 @@
 from socket import *
-import time
+import threading
+
 
 #dados da conexão com o servidor
 
@@ -14,9 +15,7 @@ sockObjeto.listen(5) #limita
 
 #Testando conexão com o servidor
 
-while True:
-    time.sleep(5)
-    conexao, endereco = sockObjeto.accept()
+def conectado(conexao, endereco):
     print("O servidor esta conectado por", endereco)
     print(conexao)
     while True: #Enquanto houverem dados
@@ -34,4 +33,7 @@ while True:
                 
     conexao.close()
 
-        
+while True:
+    conexao, endereco = sockObjeto.accept()
+    threading.Thread(target = conectado, args = [conexao, endereco]).start()
+
