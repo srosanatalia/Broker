@@ -33,11 +33,11 @@ def envia_mensagens(socket):
 
 
 #dados da conexão do cliente
-serverHost = 'localhost' #Coloco o endereõ de IP do servidor
+serverHost = 'localhost' #Coloco o endereço de IP do servidor
 serverPort = 8000
 
 
-sockObjeto = socket (AF_INET, SOCK_STREAM) #Usando servidor TCP-IP
+sockObjeto = socket (AF_INET, SOCK_STREAM) #Usando servidor TCP-IP | configurações para uso do protocolo TCP
 sockObjeto.connect((serverHost, serverPort)) #Conexão
 envia = Thread(target=envia_mensagens, args=(sockObjeto,))
 recebe = Thread(target=recebe_mensagens, args=(sockObjeto,))

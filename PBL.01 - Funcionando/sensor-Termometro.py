@@ -4,24 +4,9 @@ import time
 from random import randint
 from tkinter import *
 
-'''
-def recebe_mensagens(socket, mensagem):
-    while True:
-        data = socket.recv(1024)
-        if not data:
-            break
-        print(data.decode("utf-8"))
-    print("Conexão com o servidor encerrada")
-'''
 
 def envia_mensagens(socket):
     while True:
-        #msg = 'publisher'
-        #socket.send(msg.encode("utf-8"))
-        #mensagem = mensagem.encode("utf-8")
-        #ms =input('digite valor')
-        #ms = ms.encode('utf-8')
-        #self.msgs = [tipoSensor, ms]
         time.sleep(3)
         mensagem = [b'termometro', (str(randint(0,50))).encode('utf-8')]
         for linha in mensagem: #manda linha a linha
@@ -33,7 +18,6 @@ def envia_mensagens(socket):
                 lblTitulo2 = Label (Top, font=('arial', 10), text = 'Temperatura atual: '+ str(linha)+ 'º', width=20)
                 lblTitulo2.grid(row=1, column=0)
             #Depois de mandar uma linha, esperamos uma resposta
-        #socket.send(mensagem)
         
     print("Envio de mensagens encerrado!")
 
@@ -42,14 +26,10 @@ def envia_mensagens(socket):
 
 serverHost = 'localhost' #Coloco o endereõ de IP do servidor
 serverPort = 8000
-#tipoSensor = b'publisher'
-#temperatura = (str(randint(17,46))).encode('utf-8')
-#mensagem = [tipoSensor, (str(randint(17,46))).encode('utf-8')] #b formato de bytes #vai variar
 
 sockObjeto = socket (AF_INET, SOCK_STREAM) #Usando servidor TCP-IP
 sockObjeto.connect((serverHost, serverPort)) #Conexão
 envia = Thread(target=envia_mensagens, args=(sockObjeto,))
-#recebe = Thread(target=recebe_mensagens, args=(sockObjeto,))
 
 root = Tk()
 root.geometry('400x100')

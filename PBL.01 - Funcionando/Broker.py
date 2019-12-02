@@ -29,27 +29,6 @@ def Comunicacao():
             
             if not mensagem:
                 break
-
-            
-            '''
-        mensagem = aplicacoes_inscritas[a].recv(5000)
-        
-        if (mensagem == b'publisher'):
-            mensagem = aplicacoes_inscritas[a].recv(5000)
-            print (mensagem)
-        elif (mensagem == b'subscribe'):
-            subscribe.append(aplicacoes_inscritas[a])
-            
-        if not mensagem:
-            break
-        
-        aplicacoes_inscritas[b].sendall(mensagem)
-        
-        if (mensagem == b'publisher'):
-            mensagem = aplicacoes_inscritas[a].recv(5000)
-            print (mensagem)
-        elif (mensagem == b'subscribe'):
-            subscribe.append(aplicacoes_inscritas[b])'''
             
     conexao.close()
 
@@ -66,6 +45,3 @@ for i in range(3):
 t1 = Thread(target=Comunicacao, args=()).start()
 t2 = Thread(target=Comunicacao, args=()).start()
 t3 = Thread(target=Comunicacao, args=()).start()
-
-'''t1 = Thread(target=ConversaSimultanea, args=(1,0,)).start()
-t2 = Thread(target=ConversaSimultanea, args=(0,1,)).start()'''

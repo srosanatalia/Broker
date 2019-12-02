@@ -29,10 +29,7 @@ def envia_mensagens(socket):
         
     print("Envio de mensagens encerrado!")
 
-
-
-#def main():
-    #dados da conexão do cliente
+#dados da conexão do cliente
 serverHost = 'localhost' #Coloco o endereõ de IP do servidor
 serverPort = 8000
 
@@ -56,8 +53,4 @@ envia.start()
 recebe.start()
 
 root.mainloop()
-    
-    
 
-#if __name__ == "__main__":
-#    main()
